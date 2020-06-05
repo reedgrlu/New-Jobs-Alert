@@ -53,7 +53,7 @@ if available == True:
     print('Jobs available! Sent notificaton e-mails')
 
 else:
-    conn.sendmail('fromUser@gmail.com', 'toUser@gmail.com'', "Subject: No New Jobs Available At Amazon\n\n" + link)
+    conn.sendmail('fromUser@gmail.com', 'toUser@gmail.com', "Subject: No New Jobs Available\n\n" + link)
     conn.quit()
     print('No new jobs available today')
 
