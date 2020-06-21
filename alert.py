@@ -7,7 +7,7 @@
 # 1. add the job page links to the email for each hit
 # 2. be able to do multiple page searches, clicking through pages
 
-import bs4, requests, smtplib
+import bs4, requests, smtplib, time
 from selenium import webdriver
 
 options = webdriver.ChromeOptions()
@@ -50,12 +50,19 @@ conn.login('yourUserName@gmail.com', 'yourPassword')
 if available == True:
     conn.sendmail('fromUser@gmail.com', 'toUser@gmail.com', "Subject: Attention!!!\n\nA New Job Is Available!\n\n" + link)
     conn.quit()
-    print('Jobs available! Sent notificaton e-mails')
-
+    
 else:
     conn.sendmail('fromUser@gmail.com', 'toUser@gmail.com', "Subject: No New Jobs Available\n\n" + link)
     conn.quit()
-    print('No new jobs available today')
+
+
+# console log the current time of email being sent
+t = time.localtime()
+current_time = time.strftime("%H:%M:%S", t)
+print('Sent notificaton e-mails at ' + current_time)
+
+# exit browser driver when script completes
+driver.quit()
 
 
 
